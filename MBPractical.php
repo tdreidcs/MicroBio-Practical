@@ -2,7 +2,7 @@
   <head>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.1/angular.js"></script>
     <script> /**
-  	var myApp = angular.module('myApp', []);
+	var myApp = angular.module('myApp', []);
 
 	function GradeCalculator($scope) {
 
@@ -34,24 +34,39 @@
 	  };
 	} **/
 	var myApp = angular.module('myApp', []);
-	function UnkownTest($scope) {
-		$scope.gradeInfo = [];
-	}	
+	function UnknownTest($scope) {
+
+		AESFAEFEAFESFSE
+		$scope.bacteria =  [
+		{name: "staphylococcus aureus"},
+		{name: "staphylococcus saprophyticus"},
+		{name: "staphylococcus epidermidis"},
+		{name: "streptococcus pneumoniae"},
+		{name: "klebsiella pneumoniae"},
+		{name: "escherichia coli"},
+		{name: "enterobacter"}
+		];
+
+		$scope.tests = [
+		];
+		
+		$scope.generatePossibilities = function() {
+			bacteria_list = '';
+			angular.forEach($scope.bacteria, function(value) {
+				bacteria_list += value.name + ", ";
+			});
+			return bacteria_list;
+		}; 
+	}
     </script>
   </head>
-	<div ng-app="myApp" ng-controller="UnknownTest">
+	<div ng-app="myApp" ng-controller="UnknownTest" >
 	  <h2>Welcome to the Micribiology Unknowns Tester Study Guide</h2>
-	  <div>
-	    <span>{{ calculateGrade() }} out of 100. Your grade is: {{ gradeLetter() }} </span>
-	    <ul class="unstyled">
-	      <li ng-repeat="item in gradeInfo">
-	        <span>Grade: {{item.grade}} Weight: {{item.weight}}%</span>
-	      </li>
-	    </ul>
-	    <form ng-submit="addGrade()" ng-model="input" ng-change="grade=input;weight=input">
-	      <input type="number" ng-model="grade" size="30" placeholder="add grade percentage here">
-	      <input type="number" size="30" ng-model="weight" placeholder="add weight percentage here">
-	      <input class="btn-primary" type="submit" value="add">
+	  <div >
+	    <span>Possibilities: {{ generatePossibilities() }}</span>
+	    <form ng-submit="conductTest()" ng-model="test">
+	    	<select multiple>
+	    	</select>
 	    </form>
 	  </div>
 	</div>
